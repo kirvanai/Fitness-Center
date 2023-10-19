@@ -1,14 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fitness_Center
+namespace Fitness_Center.Models
 {
     public class SingleClubMember : Member
     {
-        public override void CheckIn()
+        public Club club {  get; set; }
+
+        public SingleClubMember(int id, string name) : base(id, name)
+        {
+            ID = id;
+            Name = name;
+
+        }
+
+        public override void CheckIn(Member member)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void CalculateFee()
+
         {
             throw new NotImplementedException();
         }

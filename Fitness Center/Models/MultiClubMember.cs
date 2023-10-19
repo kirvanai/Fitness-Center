@@ -1,16 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fitness_Center
+﻿namespace Fitness_Center.Models
 {
-    internal class MultiClubMember : Member
+    public class MultiClubMember : Member
     {
-        public override void CheckIn()
+        public int PointsEarned { get; set; }
+
+        public List<Club> clubs { get; set; }
+
+        public MultiClubMember(int id, string name) : base(id, name)
+        {
+            ID = id;
+            Name = name;
+
+        }
+
+        public override void CheckIn(Member member)
         {
             throw new NotImplementedException();
         }
+
+        public override void CalculateFee()
+        {
+            throw new NotImplementedException();
+        }
+
     }
+
+
 }
