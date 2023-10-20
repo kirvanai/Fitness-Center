@@ -40,8 +40,9 @@ namespace Fitness_Center.Models
 
         }
 
-        public List<Club> Clubs { get; set; } = new List<Club>();
-        
+        public static List<Club> Clubs { get; set; } = new List<Club>();
+
+       
 
 
     }
