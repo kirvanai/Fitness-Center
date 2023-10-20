@@ -9,9 +9,9 @@ namespace Fitness_Center.Models
         {
            
         }
-        public SingleClubMember(int id, string name, Club club) : base(id, name)
+        public SingleClubMember( string name, Club club) : base( name)
         {
-            ID = id;
+            ID = 1000 + Members.Count;
             Name = name;
             Club = club;
         }
@@ -32,10 +32,10 @@ namespace Fitness_Center.Models
             }
         }
 
-        public override void CalculateFee()
+        public override double CalculateFee()
 
         {
-            throw new NotImplementedException();
+            return Club.Fee;
         }
     }
 }

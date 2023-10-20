@@ -5,7 +5,7 @@ namespace Fitness_Center.Models
 {
     public class MultiClubMember : Member
     {
-        public int PointsEarned { get; set; }
+        public int PointsEarned { get; set; } = 0;
 
         public List<Club> Clubs { get; set; }
 
@@ -14,9 +14,9 @@ namespace Fitness_Center.Models
 
         }
 
-        public MultiClubMember(int id, string name, List<Club> clubs) : base(id, name)
+        public MultiClubMember( string name, List<Club> clubs) : base( name)
         {
-            ID = id;
+            ID = 1000 + Members.Count;
             Name = name;
             Clubs = clubs;
 
@@ -26,25 +26,20 @@ namespace Fitness_Center.Models
         {
             MultiClubMember multiClubMember = new MultiClubMember();
             multiClubMember = (MultiClubMember)member;
-
-            for (int i = 0; i < Clubs.Count; i++)
-            {
-                if (multiClubMember.Clubs[i].Name.Contains(input))
-                {
-                    Console.WriteLine($"Thanks for checking into the {multiClubMember.Clubs[i].Name}");
-                }
-                else
-                {
-                    Console.WriteLine("Club not found under membership.");
-                }
-            }
-
+            Console.WriteLine($"Thanks for checking into the {input}");
+            PointsEarned++;
+              
 
         }
 
-        public override void CalculateFee()
+        public override double CalculateFee()
         {
-            throw new NotImplementedException();
+            double output = 0;
+            for (int i = 0;i < Clubs.Count;i++)
+            {
+                output = output + Clubs[i].Fee;
+            }
+            return output;
         }
 
     }
