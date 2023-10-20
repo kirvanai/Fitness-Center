@@ -1,3 +1,4 @@
+
 ﻿namespace Fitness_Center.Models
 {
     public abstract class Member
@@ -21,5 +22,6 @@
         public abstract void CalculateFee();
 
     }
+
 
 }

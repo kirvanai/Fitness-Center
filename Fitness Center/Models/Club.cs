@@ -1,4 +1,9 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Fitness_Center.Models
 {
     public enum Facilities
@@ -19,7 +24,7 @@ namespace Fitness_Center.Models
 
     public class Club
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string Name { get; set; }
         public string[] Address { get; set; }
         public List<Facilities> ClubFacilities { get; set; }
@@ -34,7 +39,12 @@ namespace Fitness_Center.Models
             Fee = fee;
 
         }
-    
+
+        public List<Club> Clubs { get; set; } = new List<Club>();
+        
+
+
     }
 
 }
+
