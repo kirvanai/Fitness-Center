@@ -16,7 +16,7 @@
 
         public Member(string name)
         {
-            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
+            ID = 1000 + Members.Count;
             Name = name;
         }
 

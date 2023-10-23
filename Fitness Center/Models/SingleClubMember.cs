@@ -13,7 +13,7 @@ namespace Fitness_Center.Models
         }
         public SingleClubMember( string name, string clubName) : base( name)
         {
-            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
+            ID = Member.Members == null ? 1000 : ID = 1000 + Members.Count;
             Name = name;
             ClubName = clubName;
         }
@@ -35,18 +35,13 @@ namespace Fitness_Center.Models
         }
 
         public override double CalculateFee()
-<<<<<<< HEAD
 
-        {
-            return Club.Fee;
-=======
         {
             Club? club = new Club();
 
             club = Club.Clubs.FirstOrDefault(x => x.Name == ClubName);
 
             return club.Fee;
->>>>>>> Main
         }
     }
 }
