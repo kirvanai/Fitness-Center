@@ -1,39 +1,49 @@
 ﻿using Fitness_Center.Models;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Fitness_Center
 {
     public class Program
     {
-        
+
         public static void Main(string[] args)
         {
             int menuInput;
             int memberId;
 
+
             string? nameInput;
             string? clubName;
+            string? checkininput;
 
-            Console.WriteLine("Welcome to 4 guys 4 clubs. How can I assist you today?");
+            Data data = new Data();
+            data.DataSetup();
+
+            Console.WriteLine("Welcome to 4 guys 4 clubs. Please enter your name");
+            Console.WriteLine("Please enter your name:");
+            nameInput = Console.ReadLine();
+
+
+            Console.WriteLine("Please select from the following menu options:");
+
             Console.WriteLine("1. Start a new membership.");
             Console.WriteLine("2. Cancel a membership.");
             Console.WriteLine("3. Check in with your membership.");
             Console.WriteLine("4. See your current membership fee.");
-            
+
             menuInput = int.Parse(Console.ReadLine());
-            
+
             switch (menuInput)
             {
                 case 1:
-
-                    Console.WriteLine("Please enter your name:");
-                    nameInput = Console.ReadLine();
 
                     Console.WriteLine("What type of membership? Single-club or Multi-club?");
 
                     string input2 = Console.ReadLine().ToLower().Trim();
                     if (input2 == "single-club")
-                    {                                                
-                        for (int i = 0; i < Club.Clubs.Count;  i++)
+                    {
+                        for (int i = 0; i < Club.Clubs.Count; i++)
                         {
                             Console.WriteLine(Club.Clubs[i].Name);
                         }
@@ -54,19 +64,27 @@ namespace Fitness_Center
 
                     Console.WriteLine("Enter the Id of the member you want to remove.");
 
-                    memberId =  int.Parse(Console.ReadLine());
+                    memberId = int.Parse(Console.ReadLine());
 
                     Member.Members.RemoveAt(memberId);
 
                     break;
 
-                case 3:
-                    //checkin
+                case 3:                   
+                   
+                    Console.WriteLine("Please enter club name");
+                    clubName = (Console.ReadLine().Trim());
+                      
+                    var memberCheckin = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                    memberCheckin.CheckIn(memberCheckin, clubName);        
+
                     break;
+
                 case 4:
-                    //calculate fee
+                    var memberFee = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                    memberFee.CalculateFee();
                     break;
-                
+
 
 
             }

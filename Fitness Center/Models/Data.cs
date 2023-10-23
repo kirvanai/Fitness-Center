@@ -26,18 +26,14 @@
             Club.Clubs.Add(club3);
             Club.Clubs.Add(club4);
 
-            SingleClubMember mem1 = new SingleClubMember( "John Adams", club1.Name);
+            SingleClubMember mem1 = new SingleClubMember("John Adams", club1.Name);
             SingleClubMember mem2 = new SingleClubMember("George Washinton", club2.Name);
             SingleClubMember mem3 = new SingleClubMember("Abe Lincoln", club3.Name);
 
-            List<Club> mclubs1 = new List<Club>() { club1, club2 };
-            List<Club> mclubs2 = new List<Club>() { club1, club3 };
-            List<Club> mclubs3 = new List<Club>() { club1, club4 };
 
-
-            MultiClubMember mem4 = new MultiClubMember("John Hancock", mclubs1);
-            MultiClubMember mem5 = new MultiClubMember("Thomas Edison", mclubs2);
-            MultiClubMember mem6 = new MultiClubMember("Bill Clinton", mclubs3);
+            MultiClubMember mem4 = new MultiClubMember("John Hancock");
+            MultiClubMember mem5 = new MultiClubMember("Thomas Edison");
+            MultiClubMember mem6 = new MultiClubMember("Bill Clinton");
 
             Member.Members.Add(mem1);
             Member.Members.Add(mem2);
