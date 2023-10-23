@@ -1,19 +1,16 @@
 
-using Fitness_Center.Models;
-
 namespace Fitness_Center.Models
 {
     public class SingleClubMember : Member
     {
-        public string ClubName {  get; set; }
+        public string ClubName { get; set; }
 
         public SingleClubMember()
         {
-           
+
         }
-        public SingleClubMember( string name, string clubName) : base( name)
+        public SingleClubMember(string name, string clubName) : base(name)
         {
-            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
             Name = name;
             ClubName = clubName;
         }
@@ -24,7 +21,7 @@ namespace Fitness_Center.Models
             SingleClubMember singleClubMember = new SingleClubMember();
             singleClubMember = (SingleClubMember)Member.Members.FirstOrDefault(n => n.Name == member.Name);
 
-            if (clubName == singleClubMember.ClubName) 
+            if (clubName == singleClubMember.ClubName)
             {
                 Console.WriteLine($"Thank you for checking into the {ClubName}");
             }
@@ -35,18 +32,13 @@ namespace Fitness_Center.Models
         }
 
         public override double CalculateFee()
-<<<<<<< HEAD
-
-        {
-            return Club.Fee;
-=======
         {
             Club? club = new Club();
 
             club = Club.Clubs.FirstOrDefault(x => x.Name == ClubName);
 
             return club.Fee;
->>>>>>> Main
+
         }
     }
 }
