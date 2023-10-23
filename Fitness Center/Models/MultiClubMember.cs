@@ -15,16 +15,16 @@ namespace Fitness_Center.Models
 
         public MultiClubMember( string name) : base( name)
         {
-            ID = 1000 + Members.Count;
+            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
             Name = name;
             
         }
 
-        public override void CheckIn(Member member, string input)
+        public override void CheckIn(Member member, string clubName)
         {
             MultiClubMember multiClubMember = new MultiClubMember();
             multiClubMember = (MultiClubMember)member;
-            Console.WriteLine($"Thanks for checking into the {input}");
+            Console.WriteLine($"Thanks for checking into the {clubName}");
             PointsEarned++;
               
 
@@ -32,6 +32,9 @@ namespace Fitness_Center.Models
 
         public override double CalculateFee()
         {
+<<<<<<< HEAD
+            return Club.fee;            
+=======
             double output = 0;
 
             for (int i = 0;i < Club.Clubs.Count;i++)
@@ -42,6 +45,7 @@ namespace Fitness_Center.Models
             output = output * 0.75;
 
             return output;
+>>>>>>> Main
         }
 
     }
