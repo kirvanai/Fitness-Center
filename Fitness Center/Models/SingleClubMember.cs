@@ -1,4 +1,6 @@
 
+using Fitness_Center.Models;
+
 namespace Fitness_Center.Models
 {
     public class SingleClubMember : Member
@@ -11,18 +13,18 @@ namespace Fitness_Center.Models
         }
         public SingleClubMember( string name, string clubName) : base( name)
         {
-            ID = 1000 + Members.Count;
+            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
             Name = name;
             ClubName = clubName;
         }
 
-        public override void CheckIn(Member member, string input)
+        public override void CheckIn(Member member, string clubName)
         {
 
             SingleClubMember singleClubMember = new SingleClubMember();
-            singleClubMember = (SingleClubMember)member;
+            singleClubMember = (SingleClubMember)Member.Members.FirstOrDefault(n => n.Name == member.Name);
 
-            if (input == singleClubMember.ClubName) 
+            if (clubName == singleClubMember.ClubName) 
             {
                 Console.WriteLine($"Thank you for checking into the {ClubName}");
             }
