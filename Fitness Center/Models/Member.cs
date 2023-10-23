@@ -25,7 +25,7 @@
 
         public virtual void RemoveMember(Member member) => member.Members.Remove(member);
 
-        public abstract void CalculateFee();
+        public abstract double CalculateFee();
 
     }
 

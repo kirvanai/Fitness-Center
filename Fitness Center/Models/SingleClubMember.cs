@@ -32,10 +32,10 @@ namespace Fitness_Center.Models
             }
         }
 
-        public override void CalculateFee()
+        public override double CalculateFee()
 
         {
-            throw new NotImplementedException();
+            return Club.Fee;
         }
     }
 }
