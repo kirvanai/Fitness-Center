@@ -6,7 +6,6 @@ namespace Fitness_Center
 {
     public class Program
     {
-
         public static void Main(string[] args)
         {
             int menuInput;
@@ -24,6 +23,15 @@ namespace Fitness_Center
             Console.WriteLine("Please enter your name:");
             nameInput = Console.ReadLine();
 
+            Console.WriteLine("Are you currently a member? (yes/no)");
+            string input2 = Validator.GetValidYesNoInput(Console.ReadLine());
+            if (input2 == "yes")
+            {
+                var memberDetails = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                int memID = memberDetails.ID;
+                Console.WriteLine($"Member ID: {memID}");
+            }
+
 
             Console.WriteLine("Please select from the following menu options:");
 
@@ -32,7 +40,7 @@ namespace Fitness_Center
             Console.WriteLine("3. Check in with your membership.");
             Console.WriteLine("4. See your current membership fee.");
 
-            menuInput = int.Parse(Console.ReadLine());
+            menuInput = Validator.GetValidMenuInput(Console.ReadLine());
 
             switch (menuInput)
             {
@@ -40,8 +48,8 @@ namespace Fitness_Center
 
                     Console.WriteLine("What type of membership? Single-club or Multi-club?");
 
-                    string input2 = Console.ReadLine().ToLower().Trim();
-                    if (input2 == "single-club")
+                    string input3 = Console.ReadLine().ToLower().Trim();
+                    if (input3 == "single-club")
                     {
                         for (int i = 0; i < Club.Clubs.Count; i++)
                         {
@@ -85,12 +93,7 @@ namespace Fitness_Center
                     memberFee.CalculateFee();
                     break;
 
-
-
             }
-
         }
-
     }
 }
-

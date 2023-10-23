@@ -5,7 +5,7 @@
     {
         public static List <Member> Members= new List <Member> ();
         public int ID { get; set; }
-
+        
         public string? Name { get; set; }
 
         public Member()
@@ -16,7 +16,7 @@
 
         public Member(string name)
         {
-            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
+            ID = Members.Count == 0 ? 1000 : Members.Max(m => m.ID) + 1;
             Name = name;
         }
 
