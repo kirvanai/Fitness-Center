@@ -54,5 +54,33 @@ namespace Fitness_Center.Models
             return input2;
         }
 
+        public static string GetValidName(string input)
+        {
+            while (string.IsNullOrWhiteSpace(input) || !IsNameValid(input))
+            {
+                Console.WriteLine("Invalid name. Please enter a valid name.");
+                input = Console.ReadLine().Trim();
+            }
+            return input;
+        }
+        public static bool IsNameValid(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return false;
+            }
+
+
+            if (name.Any(char.IsDigit) || name.Any(char.IsPunctuation) || name.Any(char.IsSymbol))
+            {
+                return false;
+            }
+
+            string lowerName = name.ToLower();
+
+
+            return Member.Members.Any(member => member.Name.ToLower() == lowerName);
+        }
+
     }
 }
