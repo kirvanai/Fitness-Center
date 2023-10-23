@@ -16,11 +16,9 @@
 
         public Member(string name)
         {
-<<<<<<< HEAD
-            ID = 1000 + Members.Count;
-=======
+
             ID = Members.Count == 0 ? 1000 : Members.Max(m => m.ID) + 1;
->>>>>>> 16501aab4817900c1c8064e9005c3c5a98f809a7
+
             Name = name;
         }
 
