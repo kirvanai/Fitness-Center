@@ -1,6 +1,7 @@
 ﻿using Fitness_Center.Models;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace Fitness_Center
 {
@@ -9,26 +10,25 @@ namespace Fitness_Center
         public static void Main(string[] args)
         {
             int menuInput;
-            int memberId;
+            int memID =0;
 
 
             string? nameInput;
             string? clubName;
             string? checkininput;
-
+            
             Data data = new Data();
             data.DataSetup();
 
             Console.WriteLine("Welcome to 4 guys 4 clubs. Please enter your name");
             Console.WriteLine("Please enter your name:");
             nameInput = Console.ReadLine();
-
+            var memberDetails = Member.Members.FirstOrDefault(m => m.Name == nameInput);
             Console.WriteLine("Are you currently a member? (yes/no)");
             string input2 = Validator.GetValidYesNoInput(Console.ReadLine());
             if (input2 == "yes")
             {
-                var memberDetails = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-                int memID = memberDetails.ID;
+                memID = memberDetails.ID;
                 Console.WriteLine($"Member ID: {memID}");
             }
 
@@ -46,10 +46,10 @@ namespace Fitness_Center
             {
                 case 1:
 
-                    Console.WriteLine("What type of membership? Single-club or Multi-club?");
+                    Console.WriteLine("What type of membership? 'single' or 'multi'?");
 
-                    string input3 = Console.ReadLine().ToLower().Trim();
-                    if (input3 == "single-club")
+                    string input3 = Validator.GetValidSingle(Console.ReadLine().ToLower().Trim());
+                    if (input3 == "single")
                     {
                         for (int i = 0; i < Club.Clubs.Count; i++)
                         {
@@ -59,22 +59,25 @@ namespace Fitness_Center
                         clubName = Console.ReadLine();
 
                         SingleClubMember memNew = new SingleClubMember(nameInput, clubName);
+                        memNew.AddMember(memNew);
 
                     }
                     else
                     {
                         MultiClubMember memNew = new MultiClubMember(nameInput);
+                        memNew.AddMember(memNew);
 
                     }
 
                     break;
                 case 2:
 
-                    Console.WriteLine("Enter the Id of the member you want to remove.");
+                    if (input2 == "no")
+                    {
+                        Console.WriteLine("You are not currently a member. Cannot cancel a membership.");
+                    }
 
-                    memberId = int.Parse(Console.ReadLine());
-
-                    Member.Members.RemoveAt(memberId);
+                    memberDetails.RemoveMember(memberDetails);
 
                     break;
 
@@ -90,7 +93,7 @@ namespace Fitness_Center
 
                 case 4:
                     var memberFee = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-                    memberFee.CalculateFee();
+                    Console.WriteLine(memberFee.CalculateFee().ToString("C", CultureInfo.CurrentCulture)); 
                     break;
 
             }

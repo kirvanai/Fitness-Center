@@ -11,9 +11,9 @@ namespace Fitness_Center.Models
 
         }
 
-        public MultiClubMember( string name) : base( name)
+        public MultiClubMember(string name) : base(name)
         {
-            Name = name;
+            
         }
 
         public override void CheckIn(Member member, string clubName)
@@ -25,8 +25,8 @@ namespace Fitness_Center.Models
         }
 
         public override double CalculateFee()
-        {           
-
+        {
+                      
             double output = 0;
 
             for (int i = 0;i < Club.Clubs.Count;i++)

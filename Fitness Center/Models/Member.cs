@@ -16,7 +16,9 @@
 
         public Member(string name)
         {
+
             ID = Members.Count == 0 ? 1000 : Members.Max(m => m.ID) + 1;
+
             Name = name;
         }
 
