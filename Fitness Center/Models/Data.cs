@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fitness_Center.Models;
-
-namespace Fitness_Center.Models
+﻿namespace Fitness_Center.Models
 {
     public class Data
     {
@@ -33,9 +26,9 @@ namespace Fitness_Center.Models
             Club.Clubs.Add(club3);
             Club.Clubs.Add(club4);
 
-            SingleClubMember mem1 = new SingleClubMember( "John Adams", club1);
-            SingleClubMember mem2 = new SingleClubMember("George Washinton", club2);
-            SingleClubMember mem3 = new SingleClubMember("Abe Lincoln", club3);
+            SingleClubMember mem1 = new SingleClubMember( "John Adams", club1.Name);
+            SingleClubMember mem2 = new SingleClubMember("George Washinton", club2.Name);
+            SingleClubMember mem3 = new SingleClubMember("Abe Lincoln", club3.Name);
 
             List<Club> mclubs1 = new List<Club>() { club1, club2 };
             List<Club> mclubs2 = new List<Club>() { club1, club3 };
@@ -46,12 +39,12 @@ namespace Fitness_Center.Models
             MultiClubMember mem5 = new MultiClubMember("Thomas Edison", mclubs2);
             MultiClubMember mem6 = new MultiClubMember("Bill Clinton", mclubs3);
 
-            mem1.Members.Add(mem1);
-            mem2.Members.Add(mem2);
-            mem3.Members.Add(mem3);
-            mem4.Members.Add(mem4);
-            mem5.Members.Add(mem5);
-            mem6.Members.Add(mem6);
+            Member.Members.Add(mem1);
+            Member.Members.Add(mem2);
+            Member.Members.Add(mem3);
+            Member.Members.Add(mem4);
+            Member.Members.Add(mem5);
+            Member.Members.Add(mem6);
         }
 
     }
