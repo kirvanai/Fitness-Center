@@ -7,19 +7,17 @@ namespace Fitness_Center.Models
     {
         public int PointsEarned { get; set; } = 0;
 
-        public List<Club> Clubs { get; set; }
 
         public MultiClubMember()
         {
 
         }
 
-        public MultiClubMember( string name, List<Club> clubs) : base( name)
+        public MultiClubMember( string name) : base( name)
         {
             ID = 1000 + Members.Count;
             Name = name;
-            Clubs = clubs;
-
+            
         }
 
         public override void CheckIn(Member member, string input)
@@ -35,10 +33,14 @@ namespace Fitness_Center.Models
         public override double CalculateFee()
         {
             double output = 0;
-            for (int i = 0;i < Clubs.Count;i++)
+
+            for (int i = 0;i < Club.Clubs.Count;i++)
             {
-                output = output + Clubs[i].Fee;
+                output = output + Club.Clubs[i].Fee;
             }
+
+            output = output * 0.75;
+
             return output;
         }
 
