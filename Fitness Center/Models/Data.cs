@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fitness_Center.Models;
-
-namespace Fitness_Center.Models
+﻿namespace Fitness_Center.Models
 {
     public class Data
     {
@@ -28,30 +21,26 @@ namespace Fitness_Center.Models
             List<Facilities> fac4 = new List<Facilities>() { Facilities.treadmill, Facilities.freeweights, Facilities.machines, Facilities.cardiomachines };
             Club club4 = new Club(4, "Club D", ar4, fac4, 40);
 
-            club1.Clubs.Add(club1);
-            club2.Clubs.Add(club2);
-            club3.Clubs.Add(club3);
-            club4.Clubs.Add(club4);
+            Club.Clubs.Add(club1);
+            Club.Clubs.Add(club2);
+            Club.Clubs.Add(club3);
+            Club.Clubs.Add(club4);
 
-            SingleClubMember mem1 = new SingleClubMember(1001, "John Adams", club1);
-            SingleClubMember mem2 = new SingleClubMember(1002, "George Washinton", club2);
-            SingleClubMember mem3 = new SingleClubMember(1003, "Abe Lincoln", club3);
-
-            List<Club> mclubs1 = new List<Club>() { club1, club2 };
-            List<Club> mclubs2 = new List<Club>() { club1, club3 };
-            List<Club> mclubs3 = new List<Club>() { club1, club4 };
+            SingleClubMember mem1 = new SingleClubMember("John Adams", club1.Name);
+            SingleClubMember mem2 = new SingleClubMember("George Washinton", club2.Name);
+            SingleClubMember mem3 = new SingleClubMember("Abe Lincoln", club3.Name);
 
 
-            MultiClubMember mem4 = new MultiClubMember(1004, "John Hancock", mclubs1);
-            MultiClubMember mem5 = new MultiClubMember(1005, "Thomas Edison", mclubs2);
-            MultiClubMember mem6 = new MultiClubMember(1006, "Bill Clinton", mclubs3);
+            MultiClubMember mem4 = new MultiClubMember("John Hancock");
+            MultiClubMember mem5 = new MultiClubMember("Thomas Edison");
+            MultiClubMember mem6 = new MultiClubMember("Bill Clinton");
 
-            mem1.Members.Add(mem1);
-            mem2.Members.Add(mem2);
-            mem3.Members.Add(mem3);
-            mem4.Members.Add(mem4);
-            mem5.Members.Add(mem5);
-            mem6.Members.Add(mem6);
+            Member.Members.Add(mem1);
+            Member.Members.Add(mem2);
+            Member.Members.Add(mem3);
+            Member.Members.Add(mem4);
+            Member.Members.Add(mem5);
+            Member.Members.Add(mem6);
         }
 
     }

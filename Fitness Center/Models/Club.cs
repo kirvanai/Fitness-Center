@@ -30,6 +30,12 @@ namespace Fitness_Center.Models
         public List<Facilities> ClubFacilities { get; set; }
         public double Fee { get; set; }
 
+
+        public Club()         
+        { 
+            
+        }
+
         public Club(int id, string name, string[] address, List<Facilities> clubFacilities, double fee)
         {
             Id = id;
@@ -40,8 +46,9 @@ namespace Fitness_Center.Models
 
         }
 
-        public List<Club> Clubs { get; set; } = new List<Club>();
-        
+        public static List<Club> Clubs { get; set; } = new List<Club>();
+
+       
 
 
     }

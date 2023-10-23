@@ -5,46 +5,47 @@ namespace Fitness_Center.Models
 {
     public class MultiClubMember : Member
     {
-        public int PointsEarned { get; set; }
+        public int PointsEarned { get; set; } = 0;
 
-        public List<Club> Clubs { get; set; }
 
         public MultiClubMember()
         {
 
         }
 
-        public MultiClubMember(int id, string name, List<Club> clubs) : base(id, name)
+        public MultiClubMember( string name) : base( name)
         {
-            ID = id;
+            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
             Name = name;
-            Clubs = clubs;
-
+            
         }
 
-        public override void CheckIn(Member member, string input)
+        public override void CheckIn(Member member, string clubName)
         {
             MultiClubMember multiClubMember = new MultiClubMember();
             multiClubMember = (MultiClubMember)member;
-
-            for (int i = 0; i < Clubs.Count; i++)
-            {
-                if (multiClubMember.Clubs[i].Name.Contains(input))
-                {
-                    Console.WriteLine($"Thanks for checking into the {multiClubMember.Clubs[i].Name}");
-                }
-                else
-                {
-                    Console.WriteLine("Club not found under membership.");
-                }
-            }
-
+            Console.WriteLine($"Thanks for checking into the {clubName}");
+            PointsEarned++;
+              
 
         }
 
         public override double CalculateFee()
         {
+<<<<<<< HEAD
             return Club.fee;            
+=======
+            double output = 0;
+
+            for (int i = 0;i < Club.Clubs.Count;i++)
+            {
+                output = output + Club.Clubs[i].Fee;
+            }
+
+            output = output * 0.75;
+
+            return output;
+>>>>>>> Main
         }
 
     }

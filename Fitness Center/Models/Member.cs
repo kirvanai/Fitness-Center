@@ -3,8 +3,9 @@
 {
     public abstract class Member
     {
-        public List <Member> Members;
+        public static List <Member> Members= new List <Member> ();
         public int ID { get; set; }
+
         public string? Name { get; set; }
 
         public Member()
@@ -13,17 +14,17 @@
             Name = "";
         }
 
-        public Member(int id, string name)
+        public Member(string name)
         {
-            ID = id;
+            ID = Member.Members == null ? 1000 : 1000 + Members.Count;
             Name = name;
         }
 
-        public abstract void CheckIn(Member member, string input);
+        public abstract void CheckIn(Member member, string clubName);
 
-        public virtual void AddMember(Member member) => member.Members.Add(member);
+        public virtual void AddMember(Member member) => Member.Members.Add(member);
 
-        public virtual void RemoveMember(Member member) => member.Members.Remove(member);
+        public virtual void RemoveMember(Member member) => Member.Members.Remove(member);
 
         public abstract double CalculateFee();
 
