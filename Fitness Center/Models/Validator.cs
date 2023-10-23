@@ -54,6 +54,5 @@ namespace Fitness_Center.Models
             return input2;
         }
 
-
     }
 }
