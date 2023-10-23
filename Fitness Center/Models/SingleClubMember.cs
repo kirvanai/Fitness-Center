@@ -11,7 +11,6 @@ namespace Fitness_Center.Models
         }
         public SingleClubMember(string name, string clubName) : base(name)
         {
-            Name = name;
             ClubName = clubName;
         }
 
@@ -38,7 +37,6 @@ namespace Fitness_Center.Models
             club = Club.Clubs.FirstOrDefault(x => x.Name == ClubName);
 
             return club.Fee;
-
         }
     }
 }
