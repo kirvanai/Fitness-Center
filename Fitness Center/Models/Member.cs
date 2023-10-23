@@ -5,6 +5,7 @@
     {
         public List <Member> Members;
         public int ID { get; set; }
+
         public string? Name { get; set; }
 
         public Member()
@@ -13,9 +14,9 @@
             Name = "";
         }
 
-        public Member(int id, string name)
+        public Member(string name)
         {
-            ID = id;
+            ID = 1000+ Members.Count;
             Name = name;
         }
 
@@ -25,7 +26,7 @@
 
         public virtual void RemoveMember(Member member) => member.Members.Remove(member);
 
-        public abstract void CalculateFee();
+        public abstract double CalculateFee();
 
     }
 
