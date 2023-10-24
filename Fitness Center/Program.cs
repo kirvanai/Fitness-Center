@@ -40,9 +40,6 @@ namespace Fitness_Center
                 }
                 else
                 {
-
-                    
-
                     Console.WriteLine("Please select from the following menu options:");
 
                     Console.WriteLine("1. Start a new membership.");
@@ -89,8 +86,13 @@ namespace Fitness_Center
 
                         }
 
+<<<<<<< HEAD
 
                         Console.WriteLine();
+=======
+                        Console.WriteLine();
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                     case 2:
@@ -115,7 +117,13 @@ namespace Fitness_Center
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+<<<<<<< HEAD
                         Console.WriteLine();
+=======
+
+                        Console.WriteLine();
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                     case 3:
@@ -129,7 +137,13 @@ namespace Fitness_Center
                         int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
                         currentMember.CheckIn(currentMember, Club.Clubs[clubNumber-1].Name);
+<<<<<<< HEAD
                         Console.WriteLine();
+=======
+
+                        Console.WriteLine();
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                     case 4:
@@ -150,7 +164,13 @@ namespace Fitness_Center
 
                             Console.WriteLine($"You are a member of {singleClubMemberInfo.ClubName}");
                         }
+<<<<<<< HEAD
                         Console.WriteLine();
+=======
+
+                        Console.WriteLine();
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                     case 5:
@@ -159,13 +179,23 @@ namespace Fitness_Center
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+<<<<<<< HEAD
                         Console.WriteLine();
+=======
+
+                        Console.WriteLine();
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                     default:
 
                         continueOn = false;
+<<<<<<< HEAD
                         Console.WriteLine();
+=======
+
+>>>>>>> 39efd96bebd088c508f51ed16b7332b972df7c41
                         break;
 
                 }
