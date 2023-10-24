@@ -12,24 +12,42 @@ namespace Fitness_Center
             int memID = 1000;
             int clubNum = 0;
 
-            string? nameInput;            
+            string? nameInput;
             string? checkininput;
 
             bool continueOn = true;
-            
+
             ClubData data = new ClubData();
             data.DataSetup();
-                        
+
             Console.WriteLine();
             Console.WriteLine("Welcome to 4 guys 4 clubs. Please enter your name");
             Console.WriteLine();
             Console.WriteLine("Please enter your name:");
             nameInput = Validator.GetValidName(Console.ReadLine());
 
-            Member currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+            if(nameInput == "pizza the hutt")
+            {
+                Console.WriteLine("YOU CAN NEVER OUT PIZZA THE HUTT");
+            }
+
+            Console.WriteLine($"You entered: {nameInput}. Is this Correct? yes/no");
+            string namecheck = Validator.GetValidYesNoInput(Console.ReadLine().ToLower().Trim());
+            if (namecheck == "no" ) 
+            {
+                Console.WriteLine("Please enter correct name:");
+                nameInput = Validator.GetValidName(Console.ReadLine());
+            }
             
-            if (currentMember != null) { 
-            Console.WriteLine($"Member ID: {currentMember.ID}");
+                
+
+            
+
+            Member currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
+
+            if (currentMember != null)
+            {
+                Console.WriteLine($"Member ID: {currentMember.ID}");
             }
             while (continueOn)
             {
@@ -40,6 +58,7 @@ namespace Fitness_Center
                 }
                 else
                 {
+
                     Console.WriteLine("Please select from the following menu options:");
 
                     Console.WriteLine("1. Start a new membership.");
@@ -59,7 +78,7 @@ namespace Fitness_Center
 
                         Console.WriteLine();
 
-                        Console.WriteLine("What type of membership? 'single' or 'multi'?");
+                        Console.WriteLine("What type of membership? 'single' or 'multi'");
 
                         Console.WriteLine();
 
@@ -98,7 +117,7 @@ namespace Fitness_Center
                         Console.WriteLine("Are you sure you want to cancel your membership? yes/no");
                         confirmCancellation = Console.ReadLine();
                         Validator.GetValidYesNoInput(confirmCancellation);
-                        
+
                         if (confirmCancellation == "yes")
                         {
                             currentMember.RemoveMember(currentMember);
@@ -113,7 +132,7 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter your name:");
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
-                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
 
                         Console.WriteLine();
 
@@ -121,7 +140,7 @@ namespace Fitness_Center
                         break;
 
                     case 3:
-                                                
+
                         for (int i = 0; i < Club.Clubs.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}.{Club.Clubs[i].Name}");
@@ -130,7 +149,7 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter club number.");
                         int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
-                        currentMember.CheckIn(currentMember, Club.Clubs[clubNumber-1].Name);
+                        currentMember.CheckIn(currentMember, Club.Clubs[clubNumber - 1].Name);
 
 
                         Console.WriteLine();
@@ -139,7 +158,7 @@ namespace Fitness_Center
                         break;
 
                     case 4:
-                       
+
                         Console.WriteLine($"Member Id: {currentMember.ID}");
                         Console.WriteLine($"Member Name: {currentMember.Name}");
                         Console.WriteLine($"Club Fees: {currentMember.CalculateFee().ToString("C", CultureInfo.CurrentCulture)}");
@@ -168,10 +187,16 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter your name:");
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
-                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
 
                         Console.WriteLine();
 
+
+                        break;
+
+                    case 10:
+
+                        Console.WriteLine("YOU WILL NEVER OUT PIZZA THE HUT");
 
                         break;
 
@@ -186,9 +211,9 @@ namespace Fitness_Center
                 }
 
             }
-                        
+
         }
-    
+
     }
 
 }

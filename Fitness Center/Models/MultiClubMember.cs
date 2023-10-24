@@ -21,6 +21,7 @@ namespace Fitness_Center.Models
             multiClubMember = (MultiClubMember)member;
             Console.WriteLine($"Thanks for checking into the {clubName}");
             PointsEarned++;
+            Console.WriteLine($"You have earned 1 point bringing your point total to: {PointsEarned}");
         }
 
         public override double CalculateFee()
