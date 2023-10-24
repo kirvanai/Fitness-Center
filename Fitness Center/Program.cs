@@ -26,7 +26,24 @@ namespace Fitness_Center
             Console.WriteLine("Please enter your name:");
             nameInput = Validator.GetValidName(Console.ReadLine());
 
-            Member currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+            if(nameInput == "pizza the hutt")
+            {
+                Console.WriteLine("YOU CAN NEVER OUT PIZZA THE HUTT");
+            }
+
+            Console.WriteLine($"You entered: {nameInput}. Is this Correct? yes/no");
+            string namecheck = Validator.GetValidYesNoInput(Console.ReadLine().ToLower().Trim());
+            if (namecheck == "no" ) 
+            {
+                Console.WriteLine("Please enter correct name:");
+                nameInput = Validator.GetValidName(Console.ReadLine());
+            }
+            
+                
+
+            
+
+            Member currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
 
             if (currentMember != null)
             {
@@ -41,8 +58,6 @@ namespace Fitness_Center
                 }
                 else
                 {
-
-                    
 
                     Console.WriteLine("Please select from the following menu options:");
 
@@ -63,7 +78,7 @@ namespace Fitness_Center
 
                         Console.WriteLine();
 
-                        Console.WriteLine("What type of membership? 'single' or 'multi'?");
+                        Console.WriteLine("What type of membership? 'single' or 'multi'");
 
                         Console.WriteLine();
 
@@ -115,7 +130,7 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter your name:");
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
-                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
 
                         Console.WriteLine();
 
@@ -165,9 +180,15 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter your name:");
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
-                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name.ToLower() == nameInput.ToLower());
 
                         Console.WriteLine();
+
+                        break;
+
+                    case 10:
+
+                        Console.WriteLine("YOU WILL NEVER OUT PIZZA THE HUT");
 
                         break;
 

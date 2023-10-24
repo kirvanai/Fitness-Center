@@ -7,7 +7,7 @@
             try
             {
                 int output = int.Parse(input);
-                while (output > 6 || output < 1)
+                while (output > 6|| output < 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
