@@ -21,12 +21,12 @@
         public static List<Club> Clubs { get; set; } = new List<Club>();
 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; } 
-        public string State { get; set; }
+        public string? Name { get; set; }
+        public string? Address { get; set; }
+        public string? City { get; set; } 
+        public string? State { get; set; }
         public int ZipCode { get; set; }
-        public List<Facilities> ClubFacilities { get; set; }
+        public List<Facilities>? ClubFacilities { get; set; }
         public double Fee { get; set; }
 
 
