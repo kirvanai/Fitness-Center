@@ -1,0 +1,38 @@
+[
+   {
+      "id" : 1,
+      "name": "Club 1",
+      "address": "1 Fake St",
+      "city": "Fake City",
+      "state" : "MI",
+      "zipcode" : 12345,
+      "fee" : 12.00
+   },
+   {
+      "id": 2,
+      "name": "Club 2",
+      "address": "3 Fake St",
+      "city": "Fake City",
+      "state" : "MI",
+      "zipcode" : 12345,
+      "fee" : 15.00
+   },
+   {
+      "id" : 3,
+      "name": "Club 3",
+      "address": "3 Fake St",
+      "city": "Fake City",
+      "state" : "MI",
+      "zipcode" : 12345,
+      "fee" : 13.50
+   },
+   {
+      "id" : 4,
+      "name": "Club 4",
+      "address": "4 Fake St",
+      "city": "Fake City",
+      "state" : "MI",
+      "zipcode" : 12345,
+      "fee" : 25.00
+   }
+]  

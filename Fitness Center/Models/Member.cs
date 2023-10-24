@@ -9,8 +9,7 @@
 
         public Member()
         {
-            ID = 0;
-            Name = "";
+
         }
 
         public Member(string name)
@@ -20,7 +19,7 @@
 
             Name = name;
         }
-
+         
         public abstract void CheckIn(Member member, string clubName);
 
         public virtual void AddMember(Member member) => Member.Members.Add(member);
