@@ -2,16 +2,16 @@
    {
       "id": 1,
       "name": "John Adams",
-      "clubname": "Club A"
+      "clubname": "Club 1"
    },
    {
       "id" : 2,
       "name": "George Washington",
-      "clubname": "Club B"
+      "clubname": "Club 2"
    },
    {
       "id" : 3,
       "name": "Abe Lincoln",
-      "clubname": "Club C"   
+      "clubname": "Club 3"   
    }
 ]  
