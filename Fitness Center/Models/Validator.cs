@@ -13,54 +13,86 @@ namespace Fitness_Center.Models
             try
             {
                 int output = int.Parse(input);
-                while (output > 4 && output < 1)
+                while (output > 6 || output < 1)
                 {
-                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
                     GetValidMenuInput(input);
                 }
 
                 return output;
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                Console.WriteLine("Invalid input. Please enter 1 - 4.");
-                input = Console.ReadLine();
-                GetValidMenuInput(input);
+                if (ex is ArgumentException || ex is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
+                    input = Console.ReadLine();
+                    GetValidMenuInput(input);
 
+                }
+                return GetValidMenuInput(input); //Make C# happyyyy
             }
-            return -1; //Make C# happyyyy
         }
 
-        //public static int GetValidIdInput(string input)
-        //{
+        public static int GetValidClubInput(string input)
+        {
+            try
+            {
+                int output = int.Parse(input);
+                while (output > 4 || output <= 1)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                    input = Console.ReadLine();
+                    GetValidClubInput(input);
+                }
 
-        //}
+                return output;
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException || ex is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                    input = Console.ReadLine();
+                    GetValidClubInput(input);
+                }
+            }
+            return GetValidClubInput(input); //Make C# happyyyy
+        }
 
         public static string GetValidYesNoInput(string input2)
         {
-            bool isValidInput = false;
 
-            do
+            while (input2 != "yes" && input2 != "no")
             {
-               
-                if (input2 == "yes")
-                {
-                    return input2;
-                }
-                else if (input2 == "no")
-                {
-                    return input2;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
-                    input2 = Console.ReadLine().ToLower().Trim();
-                    GetValidYesNoInput(input2);
-                }
-            } while (!isValidInput);
+                Console.WriteLine("Invalid input. Please enter 'yes' or 'no'.");
+                input2 = Console.ReadLine().ToLower().Trim();
+            }
+            return input2;
 
+        }
+
+        public static string GetValidSingle(string input2)
+        {
+            while (input2 != "single" && input2 != "multi")
+            {
+                Console.WriteLine("Invalid input. Please enter 'single' or 'multi'.");
+                input2 = Console.ReadLine().ToLower().Trim();
+            }
             return input2;
         }
+
+        public static string GetValidName(string input)
+        {
+            while (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Invalid name. Please enter a valid name.");
+                input = Console.ReadLine().Trim();
+            }
+            return input;
+        }
+
     }
+
 }
