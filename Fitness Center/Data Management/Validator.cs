@@ -7,9 +7,9 @@
             try
             {
                 int output = int.Parse(input);
-                while (output > 5 && output < 1)
+                while (output > 6 && output < 1)
                 {
-                    Console.WriteLine("Invalid input. Please enter 1 - 5.");
+                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
                     GetValidMenuInput(input);
                 }
@@ -18,9 +18,33 @@
             }
             catch (FormatException)
             {
-                Console.WriteLine("Invalid input. Please enter 1 - 5.");
+                Console.WriteLine("Invalid input. Please enter 1 - 6.");
                 input = Console.ReadLine();
                 GetValidMenuInput(input);
+
+            }
+            return -1; //Make C# happyyyy
+        }
+
+        public static int GetValidClubInput(string input)
+        {
+            try
+            {
+                int output = int.Parse(input);
+                while (output > 4 && output < 1)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                    input = Console.ReadLine();
+                    GetValidClubInput(input);
+                }
+
+                return output;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                input = Console.ReadLine();
+                GetValidClubInput(input);
 
             }
             return -1; //Make C# happyyyy
