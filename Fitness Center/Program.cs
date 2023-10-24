@@ -27,7 +27,10 @@ namespace Fitness_Center
             nameInput = Validator.GetValidName(Console.ReadLine());
 
             Member currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-
+            
+            if (currentMember != null) { 
+            Console.WriteLine($"Member ID: {currentMember.ID}");
+            }
             while (continueOn)
             {
                 if (currentMember == null)
@@ -38,7 +41,7 @@ namespace Fitness_Center
                 else
                 {
 
-                    Console.WriteLine($"Member ID: {currentMember.ID}");
+                    
 
                     Console.WriteLine("Please select from the following menu options:");
 
