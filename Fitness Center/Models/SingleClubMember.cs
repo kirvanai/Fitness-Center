@@ -27,6 +27,7 @@ namespace Fitness_Center.Models
             {
                 Console.WriteLine("ERROR! Club not found under membership.");
             }
+
         }
 
         public override double CalculateFee()
@@ -37,5 +38,7 @@ namespace Fitness_Center.Models
 
             return club.Fee;
         }
+
     }
+
 }
