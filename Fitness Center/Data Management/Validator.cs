@@ -7,7 +7,7 @@
             try
             {
                 int output = int.Parse(input);
-                while (output > 6 && output < 1)
+                while (output > 6 || output < 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
@@ -16,14 +16,17 @@
 
                 return output;
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                Console.WriteLine("Invalid input. Please enter 1 - 6.");
-                input = Console.ReadLine();
-                GetValidMenuInput(input);
+                if (ex is ArgumentException || ex is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
+                    input = Console.ReadLine();
+                    GetValidMenuInput(input);
 
+                }
+                return GetValidMenuInput(input); //Make C# happyyyy
             }
-            return -1; //Make C# happyyyy
         }
 
         public static int GetValidClubInput(string input)
@@ -31,7 +34,7 @@
             try
             {
                 int output = int.Parse(input);
-                while (output > 4 && output < 1)
+                while (output > 4 || output <= 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 4.");
                     input = Console.ReadLine();
@@ -40,14 +43,16 @@
 
                 return output;
             }
-            catch (FormatException)
+            catch (Exception ex)
             {
-                Console.WriteLine("Invalid input. Please enter 1 - 4.");
-                input = Console.ReadLine();
-                GetValidClubInput(input);
-
+                if (ex is FormatException || ex is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
+                    input = Console.ReadLine();
+                    GetValidClubInput(input);
+                }
             }
-            return -1; //Make C# happyyyy
+            return GetValidClubInput(input); //Make C# happyyyy
         }
 
         public static string GetValidYesNoInput(string input2)
@@ -59,7 +64,7 @@
                 input2 = Console.ReadLine().ToLower().Trim();
             }
             return input2;
-                    
+
         }
 
         public static string GetValidSingle(string input2)
@@ -81,7 +86,7 @@
             }
             return input;
         }
-        
+
     }
 
 }

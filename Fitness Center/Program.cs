@@ -93,9 +93,10 @@ namespace Fitness_Center
                     case 2:
 
                         string confirmCancellation;
+                        Console.WriteLine("Are you sure you want to cancel your membership? yes/no");
                         confirmCancellation = Console.ReadLine();
                         Validator.GetValidYesNoInput(confirmCancellation);
-
+                        
                         if (confirmCancellation == "yes")
                         {
                             currentMember.RemoveMember(currentMember);
@@ -106,6 +107,11 @@ namespace Fitness_Center
                         {
                             Console.WriteLine("Thank you for not cancelling your membership.");
                         }
+
+                        Console.WriteLine("Please enter your name:");
+                        nameInput = Validator.GetValidName(Console.ReadLine());
+
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
 
                         break;
 
@@ -119,7 +125,7 @@ namespace Fitness_Center
                         Console.WriteLine("Please enter club number.");
                         int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
-                        currentMember.CheckIn(currentMember, Club.Clubs[clubNumber - 1].Name);
+                        currentMember.CheckIn(currentMember, Club.Clubs[clubNumber-1].Name);
 
                         break;
 
