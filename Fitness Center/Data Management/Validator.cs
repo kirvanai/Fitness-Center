@@ -11,21 +11,21 @@
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
-                    GetValidMenuInput(input);
+                    output = int.Parse(input);
                 }
 
                 return output;
             }
             catch (Exception ex)
             {
-                if (ex is ArgumentException || ex is ArgumentOutOfRangeException)
+                if (ex is FormatException || ex is ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 6.");
                     input = Console.ReadLine();
                     GetValidMenuInput(input);
 
                 }
-                return GetValidMenuInput(input); //Make C# happyyyy
+                return -1; //Make C# happyyyy
             }
         }
 
@@ -34,11 +34,11 @@
             try
             {
                 int output = int.Parse(input);
-                while (output > 4 || output <= 1)
+                while (output > 4 || output < 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 4.");
                     input = Console.ReadLine();
-                    GetValidClubInput(input);
+                    output = int.Parse(input);
                 }
 
                 return output;
