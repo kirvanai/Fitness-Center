@@ -1,4 +1,3 @@
-
 ﻿namespace Fitness_Center.Models
 {
     public abstract class Member
