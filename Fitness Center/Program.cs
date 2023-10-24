@@ -19,27 +19,26 @@ namespace Fitness_Center
             
             ClubData data = new ClubData();
             data.DataSetup();
+                        
+            Console.WriteLine();
+            Console.WriteLine("Welcome to 4 guys 4 clubs. Please enter your name");
+            Console.WriteLine();
+            Console.WriteLine("Please enter your name:");
+            nameInput = Validator.GetValidName(Console.ReadLine());
+
+            Member currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
 
             while (continueOn)
             {
-                Console.WriteLine();
-                Console.WriteLine("Welcome to 4 guys 4 clubs. Please enter your name");
-                Console.WriteLine();
-                Console.WriteLine("Please enter your name:");
-                nameInput = Validator.GetValidName(Console.ReadLine());
-
-                Member memberDetails = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-
-                if (memberDetails == null)
+                if (currentMember == null)
                 {
                     menuInput = 1;
                     Console.WriteLine("We see you are not a current member. Starting a new membership.");
                 }
                 else
                 {
-                    memID = memberDetails.ID;
 
-                    Console.WriteLine($"Member ID: {memID}");
+                    Console.WriteLine($"Member ID: {currentMember.ID}");
 
                     Console.WriteLine("Please select from the following menu options:");
 
@@ -47,7 +46,8 @@ namespace Fitness_Center
                     Console.WriteLine("2. Cancel a membership.");
                     Console.WriteLine("3. Check in with your membership.");
                     Console.WriteLine("4. See your current membership information.");
-                    Console.WriteLine("5. Exit.");
+                    Console.WriteLine("5. Change Member");
+                    Console.WriteLine("6. Exit.");
 
                     menuInput = Validator.GetValidMenuInput(Console.ReadLine());
 
@@ -72,58 +72,85 @@ namespace Fitness_Center
                             }
 
                             Console.WriteLine("Which club would you like to join?");
-                            clubNum = Validator.GetValidMenuInput(Console.ReadLine());
+                            clubNum = Validator.GetValidClubInput(Console.ReadLine());
                             SingleClubMember memNew = new SingleClubMember(nameInput, Club.Clubs[clubNum - 1].Name);
                             memNew.AddMember(memNew);
+                            currentMember = memNew;
 
                         }
                         else
                         {
                             MultiClubMember memNew = new MultiClubMember(nameInput);
                             memNew.AddMember(memNew);
+                            currentMember = memNew;
 
                         }
+
+
 
                         break;
 
                     case 2:
 
-                        memberDetails.RemoveMember(memberDetails);
+                        string confirmCancellation;
+                        confirmCancellation = Console.ReadLine();
+                        Validator.GetValidYesNoInput(confirmCancellation);
+
+                        if (confirmCancellation == "yes")
+                        {
+                            currentMember.RemoveMember(currentMember);
+                            Console.WriteLine("Your membership has been cancelled. We are sorry to see you go.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Thank you for not cancelling your membership.");
+                        }
 
                         break;
 
                     case 3:
+                                                
+                        for (int i = 0; i < Club.Clubs.Count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}.{Club.Clubs[i].Name}");
+                        }
 
-                        Console.WriteLine("Please enter club name");
-                        string clubName = (Console.ReadLine().Trim());
+                        Console.WriteLine("Please enter club number.");
+                        int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
-                        var memberCheckin = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-                        memberCheckin.CheckIn(memberCheckin, clubName);
+                        currentMember.CheckIn(currentMember, Club.Clubs[clubNumber - 1].Name);
 
                         break;
 
                     case 4:
                        
-                        Member memberFee = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+                        Console.WriteLine($"Member Id: {currentMember.ID}");
+                        Console.WriteLine($"Member Name: {currentMember.Name}");
+                        Console.WriteLine($"Club Fees: {currentMember.CalculateFee().ToString("C", CultureInfo.CurrentCulture)}");
 
-                        Console.WriteLine($"Member Id: {memberFee.ID}");
-                        Console.WriteLine($"Member Name: {memberFee.Name}");
-                        Console.WriteLine($"Club Fees: {memberFee.CalculateFee()}");
-
-                        if (memberFee.GetType() == typeof(MultiClubMember))
+                        if (currentMember.GetType() == typeof(MultiClubMember))
                         {
-                            MultiClubMember multiMemberInfo = (MultiClubMember)memberFee;
+                            MultiClubMember multiMemberInfo = (MultiClubMember)currentMember;
 
                             Console.WriteLine($"Points Earned: {multiMemberInfo.PointsEarned}");
                         }
                         else
                         {
-                            SingleClubMember singleClubMemberInfo = (SingleClubMember)memberFee;
+                            SingleClubMember singleClubMemberInfo = (SingleClubMember)currentMember;
 
                             Console.WriteLine($"You are a member of {singleClubMemberInfo.ClubName}");
                         }
 
-                        Console.WriteLine(memberFee.CalculateFee().ToString("C", CultureInfo.CurrentCulture));
+                        break;
+
+                    case 5:
+
+                        Console.WriteLine("Please enter your name:");
+                        nameInput = Validator.GetValidName(Console.ReadLine());
+
+                        currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
+
                         break;
 
                     default:
