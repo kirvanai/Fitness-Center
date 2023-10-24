@@ -1,5 +1,4 @@
-﻿
-namespace Fitness_Center.Models
+﻿namespace Fitness_Center.Models
 {
     public enum Facilities
     {
