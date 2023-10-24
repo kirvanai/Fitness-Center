@@ -1,7 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,csharp,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,csharp,visualstudio
 
-!bin/
+bin/*
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
