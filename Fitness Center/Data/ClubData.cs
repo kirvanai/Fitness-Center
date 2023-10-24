@@ -1,7 +1,8 @@
-﻿
-namespace Fitness_Center.Models
+﻿using Fitness_Center.Models;
+
+namespace Fitness_Center.Data
 {
-    public class Data
+    public class ClubData
     {
         public void DataSetup()
         {

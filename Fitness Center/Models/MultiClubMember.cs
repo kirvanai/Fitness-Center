@@ -1,4 +1,3 @@
-
 namespace Fitness_Center.Models
 {
     public class MultiClubMember : Member
