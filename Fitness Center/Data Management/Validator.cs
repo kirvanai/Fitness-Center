@@ -25,7 +25,7 @@
                     GetValidMenuInput(input);
 
                 }
-                return -1; //Make C# happyyyy
+                return GetValidMenuInput(input); //Make C# happyyyy
             }
         }
 

@@ -40,9 +40,6 @@ namespace Fitness_Center
                 }
                 else
                 {
-
-                    
-
                     Console.WriteLine("Please select from the following menu options:");
 
                     Console.WriteLine("1. Start a new membership.");
@@ -89,7 +86,7 @@ namespace Fitness_Center
 
                         }
 
-
+                        Console.WriteLine();
 
                         break;
 
@@ -116,6 +113,8 @@ namespace Fitness_Center
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
 
+                        Console.WriteLine();
+
                         break;
 
                     case 3:
@@ -129,6 +128,8 @@ namespace Fitness_Center
                         int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
                         currentMember.CheckIn(currentMember, Club.Clubs[clubNumber-1].Name);
+
+                        Console.WriteLine();
 
                         break;
 
@@ -151,6 +152,8 @@ namespace Fitness_Center
                             Console.WriteLine($"You are a member of {singleClubMemberInfo.ClubName}");
                         }
 
+                        Console.WriteLine();
+
                         break;
 
                     case 5:
@@ -160,11 +163,14 @@ namespace Fitness_Center
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
 
+                        Console.WriteLine();
+
                         break;
 
                     default:
 
                         continueOn = false;
+
                         break;
 
                 }
