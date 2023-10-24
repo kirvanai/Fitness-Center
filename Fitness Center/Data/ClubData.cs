@@ -1,4 +1,5 @@
 ﻿using Fitness_Center.Models;
+using Newtonsoft.Json;
 
 namespace Fitness_Center.Data
 {
@@ -6,45 +7,39 @@ namespace Fitness_Center.Data
     {
         public void DataSetup()
         {
-            string[] ar1 = new string[] { "1 Fake St", "Springfield, MI, 45969" };
-            List<Facilities> fac1 = new List<Facilities>() { Facilities.treadmill };
-            Club club1 = new Club(1, "Club A", ar1, fac1, 10);
+            var outPutDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var iconPath = Path.Combine(outPutDirectory, @"Clubs.txt");
 
-            string[] ar2 = new string[] { "2 Fake St", "Springfield, MI, 45969" };
-            List<Facilities> fac2 = new List<Facilities>() { Facilities.treadmill, Facilities.freeweights, };
-            Club club2 = new Club(2, "Club B", ar2, fac2, 20);
+            string jsonString = File.ReadAllText(iconPath);
 
+            List<Club> clubs = JsonConvert.DeserializeObject<List<Club>>(jsonString);
 
-            string[] ar3 = new string[] { "3 Fake St", "Springfield, MI, 45969" };
-            List<Facilities> fac3 = new List<Facilities>() { Facilities.treadmill, Facilities.freeweights, Facilities.machines };
-            Club club3 = new Club(3, "Club C", ar3, fac3, 30);
+            foreach (Club club in clubs)
+            {
+                Club.Clubs.Add(club);
+            }
 
-            string[] ar4 = new string[] { "4 Fake St", "Springfield, MI, 45969" };
-            List<Facilities> fac4 = new List<Facilities>() { Facilities.treadmill, Facilities.freeweights, Facilities.machines, Facilities.cardiomachines };
-            Club club4 = new Club(4, "Club D", ar4, fac4, 40);
+            iconPath = Path.Combine(outPutDirectory, @"SingleMembers.txt");
 
-            Club.Clubs.Add(club1);
-            Club.Clubs.Add(club2);
-            Club.Clubs.Add(club3);
-            Club.Clubs.Add(club4);
+            jsonString = File.ReadAllText(iconPath);
 
-            SingleClubMember mem1 = new SingleClubMember("John Adams", club1.Name);
-            Member.Members.Add(mem1);
+            List<SingleClubMember> singleMembers = JsonConvert.DeserializeObject<List<SingleClubMember>>(jsonString);
 
-            SingleClubMember mem2 = new SingleClubMember("George Washinton", club2.Name);
-            Member.Members.Add(mem2);
+            foreach (SingleClubMember singleMember in singleMembers)
+            {
+                Member.Members.Add(singleMember);
+            }
 
-            SingleClubMember mem3 = new SingleClubMember("Abe Lincoln", club3.Name);
-            Member.Members.Add(mem3);
+            iconPath = Path.Combine(outPutDirectory, @"MultiMembers.txt");
 
-            MultiClubMember mem4 = new MultiClubMember("John Hancock");
-            Member.Members.Add(mem4);
+            jsonString = File.ReadAllText(iconPath);
 
-            MultiClubMember mem5 = new MultiClubMember("Thomas Edison");
-            Member.Members.Add(mem5);
+            List<MultiClubMember> multiMembers = JsonConvert.DeserializeObject<List<MultiClubMember>>(jsonString);
 
-            MultiClubMember mem6 = new MultiClubMember("Bill Clinton");
-            Member.Members.Add(mem6);
+            foreach (MultiClubMember multiMember in multiMembers)
+            {
+                Member.Members.Add(multiMember);
+            }
         }
     }
 }
