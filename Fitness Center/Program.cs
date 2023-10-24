@@ -90,7 +90,7 @@ namespace Fitness_Center
                         }
 
 
-
+                        Console.WriteLine();
                         break;
 
                     case 2:
@@ -115,7 +115,7 @@ namespace Fitness_Center
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-
+                        Console.WriteLine();
                         break;
 
                     case 3:
@@ -129,7 +129,7 @@ namespace Fitness_Center
                         int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
 
                         currentMember.CheckIn(currentMember, Club.Clubs[clubNumber-1].Name);
-
+                        Console.WriteLine();
                         break;
 
                     case 4:
@@ -150,7 +150,7 @@ namespace Fitness_Center
 
                             Console.WriteLine($"You are a member of {singleClubMemberInfo.ClubName}");
                         }
-
+                        Console.WriteLine();
                         break;
 
                     case 5:
@@ -159,12 +159,13 @@ namespace Fitness_Center
                         nameInput = Validator.GetValidName(Console.ReadLine());
 
                         currentMember = Member.Members.FirstOrDefault(m => m.Name == nameInput);
-
+                        Console.WriteLine();
                         break;
 
                     default:
 
                         continueOn = false;
+                        Console.WriteLine();
                         break;
 
                 }
