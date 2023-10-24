@@ -9,8 +9,7 @@
 
         public Member()
         {
-            ID = 0;
-            Name = "";
+
         }
 
         public Member(string name)

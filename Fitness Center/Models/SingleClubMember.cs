@@ -17,7 +17,7 @@ namespace Fitness_Center.Models
         {
 
             SingleClubMember singleClubMember = new SingleClubMember();
-            singleClubMember = (SingleClubMember)Member.Members.FirstOrDefault(n => n.Name == member.Name);
+            singleClubMember = (SingleClubMember) member;
 
             if (clubName == singleClubMember.ClubName)
             {
