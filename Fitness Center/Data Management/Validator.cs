@@ -4,11 +4,10 @@
     {
         public static int GetValidMenuInput(string input)
         {
-            int output = 0;
 
             try
             {
-                output = int.Parse(input);
+                int output = int.Parse(input);
                 while (output > 6 || output < 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 6.");
@@ -16,32 +15,25 @@
                     output = int.Parse(input);
 
                 }
+                return output;
 
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                if (ex is FormatException || ex is ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
-                    input = Console.ReadLine();
-                    
-                }
-
-                GetValidMenuInput(input);
-
+                Console.WriteLine("Invalid input. Please enter 1 - 6.");
+                input = Console.ReadLine();
+                
             }
-
-            return output;
+                return GetValidMenuInput(input);
 
         }
 
         public static int GetValidClubInput(string input)
         {
-            int output = 0;
 
             try
             {
-                output = int.Parse(input);
+                int output = int.Parse(input);
                 while (output > 4 || output < 1)
                 {
                     Console.WriteLine("Invalid input. Please enter 1 - 4.");
@@ -52,20 +44,15 @@
 
                 return output;
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                if (ex is FormatException || ex is ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
-                    input = Console.ReadLine();
-                    
-                }
-
-                GetValidClubInput(input);
+                Console.WriteLine("Invalid input. Please enter 1 - 6.");
+                input = Console.ReadLine();
 
             }
+            return GetValidClubInput(input);
 
-            return output;        
+             
         
         }
 
