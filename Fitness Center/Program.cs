@@ -42,7 +42,7 @@ namespace Fitness_Center
             }
             else
             {
-                Console.WriteLine($"You entered: {nameInput}. This name was not found, is this Correct? yes/no");
+                Console.WriteLine($"You entered: {nameInput}. Is this how you want your name to appear on your membership? yes/no");
                 namecheck = Validator.GetValidYesNoInput(Console.ReadLine().ToLower().Trim());
                 
                 if (namecheck == "no")
@@ -207,11 +207,6 @@ namespace Fitness_Center
 
                         break;
 
-                    case 10:
-
-                        Console.WriteLine("YOU WILL NEVER OUT PIZZA THE HUT");
-
-                        break;
 
                     default:
 
