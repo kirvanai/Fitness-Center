@@ -22,10 +22,12 @@ namespace Fitness_Center.Models
             if (clubName == singleClubMember.ClubName)
             {
                 Console.WriteLine($"Thank you for checking into the {ClubName}");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("ERROR! Club not found under membership.");
+                Console.WriteLine();
             }
 
         }
