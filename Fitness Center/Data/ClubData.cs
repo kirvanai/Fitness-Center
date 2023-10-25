@@ -12,23 +12,18 @@ namespace Fitness_Center.Data
 
             string jsonString = File.ReadAllText(iconPath);
 
-            List<Club> clubs = JsonConvert.DeserializeObject<List<Club>>(jsonString);
-
-            foreach (Club club in clubs)
-            {
-                Club.Clubs.Add(club);
-            }
+            Club.Clubs = JsonConvert.DeserializeObject<List<Club>>(jsonString);
 
             iconPath = Path.Combine(outPutDirectory, @"SingleMembers.txt");
 
             jsonString = File.ReadAllText(iconPath);
 
-            List<SingleClubMember> singleMembers = JsonConvert.DeserializeObject<List<SingleClubMember>>(jsonString);
+            Member.Members = JsonConvert.DeserializeObject<List<Member>>(jsonString);
 
-            foreach (SingleClubMember singleMember in singleMembers)
-            {
-                Member.Members.Add(singleMember);
-            }
+            //foreach (SingleClubMember singleMember in singleMembers)
+            //{
+            //    Member.Members.Add(singleMember);
+            //}
 
             iconPath = Path.Combine(outPutDirectory, @"MultiMembers.txt");
 
