@@ -4,11 +4,14 @@
     {
         public static int GetValidMenuInput()
         {
+
             int validNumber = 0;
             bool redoLoop = true;
 
+
             while (redoLoop)
             {
+
                 if (!int.TryParse(Console.ReadLine().Trim(), out validNumber) ||
                    (validNumber <= 0 ||
                     validNumber > 6))
@@ -32,14 +35,18 @@
 
         public static int GetValidClubInput()
         {
+
             int validNumber = 0;
             bool redoLoop = true;
 
+
             while (redoLoop)
             {
+
                 if (!int.TryParse(Console.ReadLine().Trim(), out validNumber) ||
                    (validNumber <= 0 ||
                     validNumber > 4))
+
                 {
                     Console.WriteLine($"Enter a valid number between 1 and 4.");
 
@@ -52,9 +59,10 @@
                     redoLoop = false;
                 }
 
-            }
 
-            return validNumber;
+            }
+            return validNumber; 
+
 
         }
 

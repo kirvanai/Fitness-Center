@@ -66,7 +66,7 @@ namespace Fitness_Center
 
                     Console.WriteLine("Please select from the following menu options:");
 
-                    Console.WriteLine("1. Start a new membership.");
+                    Console.WriteLine("1. Change membership type.");
                     Console.WriteLine("2. Cancel a membership.");
                     Console.WriteLine("3. Check in with your membership.");
                     Console.WriteLine("4. See your current membership information.");
@@ -82,7 +82,10 @@ namespace Fitness_Center
                 switch (menuInput)
                 {
                     case 1:
-
+                        if (currentMember != null)
+                        {
+                            Member.Members.Remove(currentMember);
+                        }
                         Console.WriteLine();
 
                         Console.WriteLine("What type of membership? 'single' or 'multi'");
@@ -124,7 +127,7 @@ namespace Fitness_Center
                         
                         Console.WriteLine("Are you sure you want to cancel your membership? yes/no");
                         confirmCancellation = Console.ReadLine();
-                        Validator.GetValidYesNoInput(confirmCancellation);
+                        confirmCancellation = Validator.GetValidYesNoInput(confirmCancellation);
 
                         if (confirmCancellation == "yes")
                         {
