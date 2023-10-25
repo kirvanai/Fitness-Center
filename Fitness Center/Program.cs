@@ -82,7 +82,10 @@ namespace Fitness_Center
                 switch (menuInput)
                 {
                     case 1:
-
+                        if (currentMember != null)
+                        {
+                            Member.Members.Remove(currentMember);
+                        }
                         Console.WriteLine();
 
                         Console.WriteLine("What type of membership? 'single' or 'multi'");
