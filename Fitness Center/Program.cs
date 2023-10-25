@@ -88,6 +88,10 @@ namespace Fitness_Center
                             for (int i = 0; i < Club.Clubs.Count; i++)
                             {
                                 Console.WriteLine($"{i + 1}.{Club.Clubs[i].Name}");
+                                Console.WriteLine();
+                                Console.WriteLine($"{Club.Clubs[i].Address}");
+                                Console.WriteLine($"{Club.Clubs[i].City} {Club.Clubs[i].State}, {Club.Clubs[i].ZipCode}");
+                                Console.WriteLine();
                             }
 
                             Console.WriteLine("Which club would you like to join?");
@@ -144,6 +148,10 @@ namespace Fitness_Center
                         for (int i = 0; i < Club.Clubs.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}.{Club.Clubs[i].Name}");
+                            Console.WriteLine();
+                            Console.WriteLine($"{Club.Clubs[i].Address}");
+                            Console.WriteLine($"{Club.Clubs[i].City} {Club.Clubs[i].State}, {Club.Clubs[i].ZipCode}");
+                            Console.WriteLine();
                         }
 
                         Console.WriteLine("Please enter club number.");
