@@ -2,71 +2,60 @@
 {
     public static class Validator
     {
-        public static int GetValidMenuInput(string input)
+        public static int GetValidMenuInput()
         {
-            int output = 0;
+            int validNumber = 0;
+            bool redoLoop = true;
 
-            try
+            while (redoLoop)
             {
-                output = int.Parse(input);
-                while (output > 6 || output < 1)
-                {
-                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
-                    input = Console.ReadLine();
-                    output = int.Parse(input);
+                if (!int.TryParse(Console.ReadLine().Trim(), out validNumber) ||
+                   (validNumber <= 0 ||
+                    validNumber > 6))
+                {                    
+                    Console.WriteLine($"Enter a valid number between 1 and 6.");
 
-                }
-
-            }
-            catch (Exception ex)
-            {
-                if (ex is FormatException || ex is ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine("Invalid input. Please enter 1 - 6.");
-                    input = Console.ReadLine();
+                    redoLoop = true;             
                     
                 }
 
-                GetValidMenuInput(input);
+                else
+                {
+                    redoLoop = false;
+                }
 
             }
 
-            return output;
+            return validNumber;
 
         }
 
-        public static int GetValidClubInput(string input)
+        public static int GetValidClubInput()
         {
-            int output = 0;
+            int validNumber = 0;
+            bool redoLoop = true;
 
-            try
+            while (redoLoop)
             {
-                output = int.Parse(input);
-                while (output > 4 || output < 1)
+                if (!int.TryParse(Console.ReadLine().Trim(), out validNumber) ||
+                   (validNumber <= 0 ||
+                    validNumber > 4))
                 {
-                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
-                    input = Console.ReadLine();
-                    output = int.Parse(input);
+                    Console.WriteLine($"Enter a valid number between 1 and 4.");
+
+                    redoLoop = true;
 
                 }
 
-                return output;
-            }
-            catch (Exception ex)
-            {
-                if (ex is FormatException || ex is ArgumentOutOfRangeException)
+                else
                 {
-                    Console.WriteLine("Invalid input. Please enter 1 - 4.");
-                    input = Console.ReadLine();
-                    
+                    redoLoop = false;
                 }
 
-                GetValidClubInput(input);
-
             }
 
-            return output;        
-        
+            return validNumber;
+
         }
 
         public static string GetValidYesNoInput(string input2)

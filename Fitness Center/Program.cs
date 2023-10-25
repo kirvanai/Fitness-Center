@@ -9,7 +9,7 @@ namespace Fitness_Center
         public static void Main(string[] args)
         {
             int menuInput = 0;
-            int clubNum = 0;
+            int clubNumber;
 
             string? nameInput;
             string? namecheck;
@@ -73,7 +73,7 @@ namespace Fitness_Center
                     Console.WriteLine("5. Change Member");
                     Console.WriteLine("6. Exit.");
 
-                    menuInput = Validator.GetValidMenuInput(Console.ReadLine());
+                    menuInput = Validator.GetValidMenuInput();
 
                     Console.WriteLine();
 
@@ -102,8 +102,8 @@ namespace Fitness_Center
                             }
 
                             Console.WriteLine("Which club would you like to join?");
-                            clubNum = Validator.GetValidClubInput(Console.ReadLine());
-                            SingleClubMember memNew = new SingleClubMember(nameInput, Club.Clubs[clubNum - 1].Name);
+                            clubNumber = Validator.GetValidClubInput();
+                            SingleClubMember memNew = new SingleClubMember(nameInput, Club.Clubs[clubNumber - 1].Name);
                             memNew.AddMember(memNew);
                             currentMember = memNew;
 
@@ -165,7 +165,7 @@ namespace Fitness_Center
                         }
 
                         Console.WriteLine("Please enter club number.");
-                        int clubNumber = (Validator.GetValidClubInput(Console.ReadLine().Trim()));
+                        clubNumber = (Validator.GetValidClubInput());
 
                         currentMember.CheckIn(currentMember, Club.Clubs[clubNumber - 1].Name);
 
